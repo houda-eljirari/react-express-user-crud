@@ -13,7 +13,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>User Management App</h1>
 
       <p>{message}</p>
