@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import UserForm from "./components/UserForm";
 import UserList from "./components/UserList";
 
+import "./App.css";
+
 function App() {
 
   const [users, setUsers] = useState([]);
@@ -29,6 +31,11 @@ function App() {
   // ADD USER
   const addUser = async () => {
 
+    if (name === "" || email === "") {
+      alert("Please fill all fields");
+      return;
+    }
+
     const newUser = {
       name,
       email
@@ -48,51 +55,55 @@ function App() {
     setEmail("");
   };
 
-  // DELETE USER
-  const deleteUser = async (id) => {
+    // DELETE USER
+    const deleteUser = async (id) => {
 
-    await fetch(`http://localhost:5000/users/${id}`, {
-      method: "DELETE"
-    });
+      await fetch(`http://localhost:5000/users/${id}`, {
+        method: "DELETE"
+      });
 
-    fetchUsers();
-  };
+      fetchUsers();
+    };
 
-  // EDIT USER
-  const editUser = (user) => {
+    // EDIT USER
+    const editUser = (user) => {
 
-    setEditingId(user.id);
+      setEditingId(user.id);
 
-    setName(user.name);
+      setName(user.name);
 
-    setEmail(user.email);
-  };
+      setEmail(user.email);
+    };
 
   // UPDATE USER
-  const updateUser = async () => {
+    const updateUser = async () => {
 
-    await fetch(`http://localhost:5000/users/${editingId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        name,
-        email
-      })
-    });
+      if (name === "" || email === "") {
+        alert("Please fill all fields");
+        return;
+      }
 
-    setEditingId(null);
+      await fetch(`http://localhost:5000/users/${editingId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name,
+          email
+        })
+      });
 
-    setName("");
+      setEditingId(null);
 
-    setEmail("");
+      setName("");
+      setEmail("");
 
-    fetchUsers();
-  };
+      fetchUsers();
+    };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="container">
 
       <h1>User Management App</h1>
 
