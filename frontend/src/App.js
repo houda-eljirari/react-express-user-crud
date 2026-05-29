@@ -10,6 +10,8 @@ function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const [editingId, setEditingId] = useState(null);
+
   // FETCH USERS
   const fetchUsers = async () => {
 
@@ -20,7 +22,6 @@ function App() {
     setUsers(data);
   };
 
-  // USE EFFECT
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -47,6 +48,49 @@ function App() {
     setEmail("");
   };
 
+  // DELETE USER
+  const deleteUser = async (id) => {
+
+    await fetch(`http://localhost:5000/users/${id}`, {
+      method: "DELETE"
+    });
+
+    fetchUsers();
+  };
+
+  // EDIT USER
+  const editUser = (user) => {
+
+    setEditingId(user.id);
+
+    setName(user.name);
+
+    setEmail(user.email);
+  };
+
+  // UPDATE USER
+  const updateUser = async () => {
+
+    await fetch(`http://localhost:5000/users/${editingId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name,
+        email
+      })
+    });
+
+    setEditingId(null);
+
+    setName("");
+
+    setEmail("");
+
+    fetchUsers();
+  };
+
   return (
     <div style={{ padding: "20px" }}>
 
@@ -58,11 +102,17 @@ function App() {
         setName={setName}
         setEmail={setEmail}
         addUser={addUser}
+        updateUser={updateUser}
+        editingId={editingId}
       />
 
       <hr />
 
-      <UserList users={users} />
+      <UserList
+        users={users}
+        deleteUser={deleteUser}
+        editUser={editUser}
+      />
 
     </div>
   );

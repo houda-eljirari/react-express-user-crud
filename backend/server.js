@@ -39,6 +39,34 @@ app.post("/users", (req, res) => {
 
 const PORT = 5000;
 
+// UPDATE USER
+app.put("/users/:id", (req, res) => {
+
+  const id = parseInt(req.params.id);
+
+  users = users.map((user) =>
+    user.id === id
+      ? {
+          ...user,
+          name: req.body.name,
+          email: req.body.email
+        }
+      : user
+  );
+
+  res.json({ message: "User updated" });
+});
+
+// DELETE USER
+app.delete("/users/:id", (req, res) => {
+
+  const id = parseInt(req.params.id);
+
+  users = users.filter((user) => user.id !== id);
+
+  res.json({ message: "User deleted" });
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

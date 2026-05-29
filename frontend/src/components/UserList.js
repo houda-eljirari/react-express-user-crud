@@ -1,4 +1,4 @@
-function UserList({ users }) {
+function UserList({ users, deleteUser, editUser }) {
 
   return (
     <div>
@@ -9,7 +9,16 @@ function UserList({ users }) {
           <div key={user.id}>
 
             <h3>{user.name}</h3>
+
             <p>{user.email}</p>
+
+            <button onClick={() => editUser(user)}>
+              Edit
+            </button>
+
+            <button onClick={() => deleteUser(user.id)}>
+              Delete
+            </button>
 
             <hr />
 

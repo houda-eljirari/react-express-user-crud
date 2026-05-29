@@ -1,4 +1,12 @@
-function UserForm({ name, email, setName, setEmail, addUser }) {
+function UserForm({
+  name,
+  email,
+  setName,
+  setEmail,
+  addUser,
+  updateUser,
+  editingId
+}) {
 
   return (
     <div>
@@ -17,9 +25,17 @@ function UserForm({ name, email, setName, setEmail, addUser }) {
         onChange={(e) => setEmail(e.target.value)}
       />
 
-      <button onClick={addUser}>
-        Add User
-      </button>
+      {
+        editingId ? (
+          <button onClick={updateUser}>
+            Update User
+          </button>
+        ) : (
+          <button onClick={addUser}>
+            Add User
+          </button>
+        )
+      }
 
     </div>
   );
