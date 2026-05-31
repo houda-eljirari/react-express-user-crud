@@ -207,6 +207,11 @@ Grâce à ce projet, j’ai appris :
 
 ---
 
-# Auteur
+## Auteur
 
-Houda Eljirari
+| Champ | Détail |
+|---|---|
+| **Nom** | Houda Eljirari |
+| **Filière** | SDIA (Science des Données et Intelligence Artificielle) |
+| **Module** | Technologies Web |
+| **Année scolaire** | 2024 / 2025 |
