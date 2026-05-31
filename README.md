@@ -214,4 +214,4 @@ Grâce à ce projet, j’ai appris :
 | **Nom** | EL JIRARI Houda |
 | **Filière** | SDIA (Science des Données et Intelligence Artificielle) |
 | **Module** | Technologies Web |
-| **Année scolaire** | 2024 / 2025 |
+| **Année scolaire** | 2025 / 2026 |
