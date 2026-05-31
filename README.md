@@ -1,13 +1,13 @@
-# Application CRUD de Gestion des Utilisateurs
+# Site web CRUD de Gestion des Utilisateurs
 
 ## Description du Projet
 
-Ce projet est une application web CRUD (Create, Read, Update, Delete) simple développée avec :
+Ce projet est un site web CRUD (Create, Read, Update, Delete) simple développée avec :
 
 * **React.js** pour le frontend
 * **Express.js** pour le backend
 
-L’application permet de :
+Le site web permet de :
 
 * Afficher les utilisateurs
 * Ajouter un utilisateur
